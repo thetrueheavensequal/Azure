@@ -1,0 +1,24 @@
+{% extends "./base.html" %}
+
+{% load static %}
+{% block title %} About {% endblock %}
+{% block content %}
+
+<div class="container py-5" id="about">
+    <div class="row align-items-center">
+        <div class="col-md-6 mb-4">
+            <img src="{% static 'images/about.png' %}" class="img-fluid rounded shadow" alt="Azure Events Showcase">
+        </div>
+        <div class="col-md-6">
+            <h2 class="fw-bold mb-3">About Azure Events</h2>
+            <p class="lead">
+                Welcome to <strong>Azure Events</strong>, where imagination meets flawless execution. We specialize in crafting unforgettable experiences through expertly managed events, tailored themes, and seamless coordination.
+            </p>
+            <p>
+                Whether it's a corporate gala, a dream wedding, or a cutting-edge product launch, Azure Events turns visions into reality with creativity, precision, and passion. With a growing portfolio of iconic moments, we are your trusted partner in celebration and success.
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

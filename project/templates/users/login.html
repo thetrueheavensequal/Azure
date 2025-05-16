@@ -1,0 +1,121 @@
+{% extends "../base.html" %}
+
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Site{% endblock %}</title>
+    <style>
+      {% comment %}body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        } {% endcomment %}
+
+        .card {
+            background-color: #fff;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 97vh;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 0.5rem 0 0.2rem;
+            color: #555;
+        }
+
+        input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 1rem;
+            padding: 0.6rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 0.5rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .link {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+
+        .hold img{
+            position: absolute;
+            left: 400px;
+            bottom: -63.5px;
+        }
+    </style>
+</head>
+<div class="card">
+<h1>Login</h1>
+<form method="post">
+    {% csrf_token %}
+    <p><label>Username:</label>
+    <input type="text" name="username"/></p>
+    <p><label>Password:</label>
+    <input type="password" name="password"/></p>
+    <p><button type="submit">Login</button></p>
+</form>
+
+<p style="background-color: red;">
+    {% if error_message %}
+        {{ error_message }}
+    {% endif %}
+</p>
+</div>
+<div class="hold">
+<img src="{% static '/images/blue.gif' %}" width="870.3px">
+</div>
+{% endblock %}

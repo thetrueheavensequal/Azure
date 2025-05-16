@@ -1,0 +1,48 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %} Status {% endblock %}
+{% block content %}
+
+<div class="container mt-5 w-76">
+    <!--<div class="alert alert-imp" role="alert">
+        "We have received your appointment request, our representative will call you shortly"
+    </div>!-->
+    
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center mb-4">Status</h2>
+
+        {% if appointment %}
+        <div class="satampt">
+            <p><strong>Status of Appointment:</strong> Confirmed</p>
+        </div>
+
+        <div class="satampt">
+            <p><strong>Appointment Date:</strong> {{ appointment.appmnt_date }}</p>
+        </div>
+
+        <div class="satampt">
+            <p><strong>Requested Event:</strong> {{ appointment.e_name.e_name }} ({{ appointment.e_name.e_desc }})</p>
+        </div>
+
+        <div class="satampt">
+            <p><strong>Customer Name:</strong> {{ appointment.c_name }}</p>
+            <p><strong>Email:</strong> {{ appointment.c_email }}</p>
+            <p><strong>Phone:</strong> {{ appointment.c_phone }}</p>
+        </div>
+
+        {% else %}
+        <p>No recent appointment found for your account.</p>
+        {% endif %}
+
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="whatsappReminder">
+            <label class="form-check-label" for="whatsappReminder">Send Reminder to WhatsApp</label>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="emailReminder">
+            <label class="form-check-label" for="emailReminder">Send Reminder to Email</label>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

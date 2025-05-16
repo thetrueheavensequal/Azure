@@ -1,0 +1,16 @@
+{% extends "./base.html" %}
+
+{% load static %}
+{% block title %} Home {% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+
+<div class="hero-section">
+    <img src="{% static '/images/home.jpg' %}" width="100%" class="hero-image">
+    <div class="overlay-text">
+        <h1><span class="highlight">Making Memories That Last </span></h1>
+        <p>Where Every Detail Matters and Every Moment Counts</p>
+</div>
+
+{% endblock %}

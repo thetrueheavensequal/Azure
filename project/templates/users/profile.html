@@ -1,0 +1,51 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="container mt-5 w-76">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center mb-4">Your Profile</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_username" class="form-label">Username</label>
+                {{ form.username }}
+            </div>
+            <div class="mb-3">
+                <label for="id_first_name" class="form-label">First Name</label>
+                {{ form.first_name }}
+            </div>
+            <div class="mb-3">
+                <label for="id_last_name" class="form-label">Last Name</label>
+                {{ form.last_name }}
+            </div>
+            <div class="mb-3">
+                <label for="id_email" class="form-label">Email</label>
+                {{ form.email }}
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+
+        <hr class="my-4">
+
+        <h4 class="mb-3">Your Appointments</h4>
+        {% if appointments %}
+            <ul class="list-group">
+                {% for appt in appointments %}
+                    <li class="list-group-item mb-3 shadow-sm">
+                        <p><strong>Event:</strong> {{ appt.e_name.e_name }}</p>
+                        <p><strong>Appointment Date:</strong> {{ appt.appmnt_date }}</p>
+                        <p><strong>Client Name:</strong> {{ appt.c_name }}</p>
+                        <p><strong>Email:</strong> {{ appt.c_email }}</p>
+                        <p><strong>Phone:</strong> {{ appt.c_phone }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You have no appointments yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

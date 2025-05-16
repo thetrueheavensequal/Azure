@@ -1,0 +1,56 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+    color: white;
+}
+
+.container-fluid{
+    height: 65px;
+}
+.navbar{
+    position: sticky;
+    top: 0;
+}
+@keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+.navbar-dark{
+    background: radial-gradient(circle, rgba(238, 174, 202, 1), rgba(148, 187, 233, 1));
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
+}
+  
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+.nav-link {
+    color: white !important;
+    font-size: 1rem;
+}
+.nav-link:hover {
+    color: #00c2ff !important; /* Light blue hover effect */
+}
+.btn-appointment {
+    background-color: #00c2ff;
+    color: white;
+    border-radius: 5px;
+    padding: 8px 15px;
+}
+.btn-appointment:hover {
+    background-color: #009acd;
+}
+  

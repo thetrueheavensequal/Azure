@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/logo.gif' %}" >
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/css/navbar.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+        <div class="container-fluid">
+            <!-- Logo and Brand Name -->
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+                <img src="{% static 'images/logo3.png' %}" width="auto" height="65px" style="position: relative; object-fit: contain; display: block;" alt="Logo">
+                <span class="ms-2"><span style="color:#00c2ff;"></span></span>
+            </a>
+
+            <!-- Toggle Button for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav" style="margin-right: 20px;">
+              <ul class="navbar-nav ms-auto">
+                  {% if user.is_authenticated %}
+                      <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'events' %}">Events</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'booking' %}">Booking</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact Us</a></li>
+                  {% else %}
+                      <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'events' %}">Events</a></li>
+                      <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact Us</a></li>
+                  {% endif %}
+          
+                  <!-- Account Menu (Always Visible) -->
+                  <li class="nav-acc dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Account</a>
+                      <ul class="dropdown-menu" style="margin-left: -33px;">
+                          {% if user.is_authenticated %}
+                              <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                          {% else %}
+                              <li><a class="dropdown-item" href="{% url 'signup' %}">Sign Up</a></li>
+                              <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                          {% endif %}
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+          
+        </div>
+    </nav>
+
+
+
+    {% block content %}{% endblock %}
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-dark text-white pt-4">
+  <!-- Social Media -->
+  <section class="d-flex justify-content-center justify-content-lg-between px-4 pb-3 border-bottom border-secondary">
+    <div class="me-5 d-none d-lg-block">
+      <span>Connect with us:</span>
+    </div>
+    <div>
+      <a href="#" class="text-white me-4 icon-pulse"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="text-white me-4 icon-pulse"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="text-white me-4 icon-pulse"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="text-white me-4 icon-pulse"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </section>
+
+  <!-- Links -->
+  <section class="">
+    <div class="container text-center text-md-start mt-4">
+      <div class="row mt-3">
+        <!-- Company Info -->
+        <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold">Azure Events</h6>
+          <p>Crafting memorable moments through curated experiences and seamless event execution.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold">Quick Links</h6>
+          <p><a href="{% url 'home' %}" class="text-white text-decoration-none">Home</a></p>
+          <p><a href="{% url 'events' %}" class="text-white text-decoration-none">Events</a></p>
+          <p><a href="{% url 'booking' %}" class="text-white text-decoration-none">Booking</a></p>
+          <p><a href="{% url 'contact' %}" class="text-white text-decoration-none">Contact</a></p>
+        </div>
+
+        <!-- Contact -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <h6 class="text-uppercase fw-bold">Contact</h6>
+          <p><i class="fas fa-map-marker-alt me-2"></i>123 Azure St, Kochi, Kerala</p>
+          <p><i class="fas fa-envelope me-2"></i>contact@azureevents.in</p>
+          <p><i class="fas fa-phone me-2"></i>+91 98765 43210</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Copyright -->
+  <div class="text-center py-3 bg-secondary text-white-50">
+    © 2025 Azure Events. All Rights Reserved.
+  </div>
+</footer>
+
+<!-- Pulse Animation Styles -->
+<style>
+  .icon-pulse i {
+    transition: color 0.3s ease;
+  }
+
+  .icon-pulse i:hover {
+    animation: pulse 0.6s ease infinite;
+    color: #00c2ff;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.75;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  footer {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  footer h6 {
+    color: #00c2ff;
+  }
+
+  footer a.text-white:hover {
+    color: #00c2ff !important;
+  }
+</style>
+
+  <!-- Footer -->
+    <!-- Bootstrap JS -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+     crossorigin="anonymous">
+    </script>
+</body>
+</html>

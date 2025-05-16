@@ -1,0 +1,20 @@
+.overlay-text{
+    position: absolute;
+    top: 65%;
+    left: 10%;
+    transform: translateY(-50%);
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 2rem;
+    line-height: 1.4;
+    font-family: 'Poppins', sans-serif;
+    max-width: 500px;
+    color: antiquewhite;
+}
+.overlay-text h1{
+    font-weight: 600;
+    font-size: 60px;
+    color: antiquewhite;
+    
+}
+
